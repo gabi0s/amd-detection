@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OCT Analysis - AI Diagnostic Tool</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="logo">OCT<span>Analysis</span></h1>
+                <div class="api-status">
+                    <div class="status-indicator" id="apiStatus"></div>
+                    <span id="apiStatusText">Checking...</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main -->
+    <main class="main">
+        <div class="container">
+            <!-- Upload Section -->
+            <section class="upload-section">
+                <div class="section-header">
+                    <h2>Upload OCT Image</h2>
+                    <p>Drag and drop or click to select an image for analysis</p>
+                </div>
+
+                <div class="upload-area" id="uploadArea">
+                    <input type="file" id="fileInput" accept="image/*" hidden>
+                    <div class="upload-content" id="uploadContent">
+                        <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <polyline points="17 8 12 3 7 8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <line x1="12" y1="3" x2="12" y2="15" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <p class="upload-text">Drag & drop your OCT image here</p>
+                        <p class="upload-subtext">or</p>
+                        <button class="btn btn-primary" id="browseBtn" type="button">Browse Files</button>
+                    </div>
+
+                    <div class="preview-area" id="previewArea" style="display: none;">
+                        <img id="previewImg" alt="Preview">
+                        <button class="btn-close" id="removeBtn" type="button">&times;</button>
+                    </div>
+                </div>
+
+                <button class="btn btn-analyze" id="analyzeBtn" disabled>
+                    <span class="btn-icon">&#9654;</span>
+                    Analyze Image
+                </button>
+            </section>
+
+            <!-- Results Section -->
+            <section class="results-section">
+                <div class="section-header">
+                    <h2>Analysis Results</h2>
+                </div>
+
+                <!-- Empty State -->
+                <div class="empty-state" id="emptyState">
+                    <svg class="empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M9 11l3 3L22 4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <p>No analysis yet</p>
+                </div>
+
+                <!-- Loading State -->
+                <div class="loading-state" id="loadingState" style="display: none;">
+                    <div class="loader"></div>
+                    <p>Analyzing image...</p>
+                </div>
+
+                <!-- Results Content -->
+                <div class="results-content" id="resultsContent" style="display: none;">
+                    <!-- Diagnosis Card -->
+                    <div class="diagnosis-box">
+                        <div class="diagnosis-main">
+                            <div class="diagnosis-label">Diagnosis</div>
+                            <div class="diagnosis-value" id="diagnosisName">-</div>
+                            <div class="confidence-info">
+                                <span>Confidence: <strong id="confidenceText">0%</strong></span>
+                                <span class="risk-badge" id="riskBadge">UNKNOWN</span>
+                            </div>
+                        </div>
+                        <div class="confidence-bar-container">
+                            <div class="confidence-bar" id="confidenceBar"></div>
+                        </div>
+                    </div>
+
+                    <!-- Clinical Info -->
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <div class="info-label">Clinical Note</div>
+                            <div class="info-value" id="clinicalNote">-</div>
+                        </div>
+                        <div class="info-card">
+                            <div class="info-label">Recommended Action</div>
+                            <div class="info-value" id="recommendedAction">-</div>
+                        </div>
+                    </div>
+
+                    <!-- Probabilities -->
+                    <div class="probabilities-box">
+                        <div class="probabilities-header">Probability Distribution</div>
+                        <div id="probabilityBars"></div>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="action-buttons">
+                        <button class="btn btn-secondary" id="downloadBtn">Download Report</button>
+                        <button class="btn btn-secondary" id="newAnalysisBtn">New Analysis</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>AI-Powered Diagnostic Tool • For Medical Professional Use Only</p>
+    </footer>
+
+    <script src="/app.js"></script>
+</body>
+</html>
