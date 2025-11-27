@@ -37,8 +37,8 @@ amd-oct-classification/
 │
 ├── data/
 │   └── oct2017/
-│       └── OCT2017_/               ⬅️ Extract dataset here
-│           ├── train/               (Training images: ~37,000)
+│       └── OCT2017_/             ⬅ Extract dataset here
+│           ├── train/              (Training images: ~37,000)
 │           │   ├── CNV/            (37,205 images)
 │           │   ├── DME/            (11,348 images)
 │           │   ├── DRUSEN/         (8,616 images)
@@ -227,3 +227,9 @@ curl -X POST http://localhost:5000/predict -F "image=@scan.jpeg"
 | Inference Speed  | 50ms (CPU) / 10ms (GPU) |
 | Model Size       | 21 MB                   |
 
+
+# Web overview
+
+Start by  launching `start.bat`, can take 1 minute to connect the local API
+
+![alt text](/png/image.png)
