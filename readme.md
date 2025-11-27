@@ -233,3 +233,7 @@ curl -X POST http://localhost:5000/predict -F "image=@scan.jpeg"
 Start by  launching `start.bat`, can take 1 minute to connect the local API
 
 ![alt text](/png/image.png)
+
+You can drag and drop images or simply import them from your computer for analysis.
+
+You will then be able to download a pre-compilation report in txt format as shown in the output example.
